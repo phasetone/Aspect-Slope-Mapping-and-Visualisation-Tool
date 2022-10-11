@@ -44,7 +44,8 @@ class AspectSlopeMapping(QgsProcessingAlgorithm):
 
     def shortHelpString(self):
         return self.tr("All-in-one aspect-slope mapping and visualisation tool. \
-                       Select your favoured aspect to highlight in the final visualisation output. A selection of no preference will use a default full spectrum colour scheme.\
+                       Select your favoured aspect to highlight in the final visualisation output. \
+                       A selection of no preference will use a default full spectrum colour scheme.\
                        Also choose whether you would like an aspect and/or slope map intermediate output as well.")
 
     def initAlgorithm(self, config=None):
@@ -79,7 +80,7 @@ class AspectSlopeMapping(QgsProcessingAlgorithm):
         self.addParameter(
             QgsProcessingParameterNumber(
                 self.ASPECTZ,
-                self.tr('Enter the aspect Z factor'),
+                self.tr('Enter the aspect Z factor (minimum of 1)'),
                 defaultValue = 1
             )
         )
@@ -96,7 +97,7 @@ class AspectSlopeMapping(QgsProcessingAlgorithm):
         self.addParameter(
             QgsProcessingParameterNumber(
                 self.SLOPEZ,
-                self.tr('Enter the slope Z factor'),
+                self.tr('Enter the slope Z factor (minimum of 1'),
                 defaultValue = 1
             )
         )
@@ -150,7 +151,7 @@ class AspectSlopeMapping(QgsProcessingAlgorithm):
             parameters,
             self.SLOPEZ,
             context
-        )  
+        )
         
         #store aspect function parameters
         aspectDict = {'INPUT' : rasterSource,
